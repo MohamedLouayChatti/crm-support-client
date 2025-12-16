@@ -45,7 +45,7 @@ public class ArticleBaseConnaissance {
     public void ajouter() {
         this.dateCreation = LocalDateTime.now();
         this.derniereModification = LocalDateTime.now();
-        System.out.println("📚 Article #" + id + " ajouté: " + titre);
+        System.out.println("[+] Article #" + id + " ajoute: " + titre);
     }
 
     /**
@@ -53,14 +53,14 @@ public class ArticleBaseConnaissance {
      */
     public void modifier() {
         this.derniereModification = LocalDateTime.now();
-        System.out.println("📝 Article #" + id + " modifié: " + titre);
+        System.out.println("[*] Article #" + id + " modifie: " + titre);
     }
 
     /**
      * Supprime l'article de la base de connaissances.
      */
     public void supprimer() {
-        System.out.println("🗑️ Article #" + id + " supprimé: " + titre);
+        System.out.println("[-] Article #" + id + " supprime: " + titre);
     }
 
     // ===== GETTERS & SETTERS =====

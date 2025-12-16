@@ -72,13 +72,13 @@ public class Ticket {
     // ===== MÉTHODES MÉTIER (délèguent au State) =====
 
     /**
-     * Crée et initialise le ticket.
+     * Cree et initialise le ticket.
      */
     public void creer() {
-        System.out.println("✅ Ticket #" + id + " créé avec succès.");
+        System.out.println("[OK] Ticket #" + id + " cree avec succes.");
         System.out.println("   Titre: " + titre);
-        System.out.println("   Priorité: " + priorite);
-        System.out.println("   État initial: " + state.getNomEtat());
+        System.out.println("   Priorite: " + priorite);
+        System.out.println("   Etat initial: " + state.getNomEtat());
         notifyObservers();
     }
 
@@ -121,7 +121,7 @@ public class Ticket {
     public void attach(TicketObserver observer) {
         if (!observers.contains(observer)) {
             observers.add(observer);
-            System.out.println("📎 Observateur ajouté au ticket #" + id);
+            System.out.println("[+] Observateur ajoute au ticket #" + id);
         }
     }
 
@@ -132,14 +132,14 @@ public class Ticket {
      */
     public void detach(TicketObserver observer) {
         observers.remove(observer);
-        System.out.println("📎 Observateur retiré du ticket #" + id);
+        System.out.println("[-] Observateur retire du ticket #" + id);
     }
 
     /**
      * Notifie tous les observateurs d'un changement.
      */
     public void notifyObservers() {
-        System.out.println("\n🔔 Notification de " + observers.size() + " observateur(s)...\n");
+        System.out.println("\n[NOTIFY] Notification de " + observers.size() + " observateur(s)...\n");
         for (TicketObserver observer : observers) {
             observer.update(this);
         }

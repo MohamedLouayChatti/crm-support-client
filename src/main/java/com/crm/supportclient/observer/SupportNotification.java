@@ -25,21 +25,21 @@ public class SupportNotification implements TicketObserver {
     public void update(Ticket ticket) {
         String message = String.format(
             """
-            ═══════════════════════════════════════════════════════
-            🔔 NOTIFICATION SUPPORT
-            ═══════════════════════════════════════════════════════
+            ===========================================================
+            NOTIFICATION SUPPORT
+            ===========================================================
             Agent: %s <%s>
             ID Agent: %s
             
-            Mise à jour du ticket #%d
+            Mise a jour du ticket #%d
             
-            📋 Titre: %s
-            📝 Description: %s
-            🎯 Priorité: %s
-            📊 Statut actuel: %s
-            📅 Créé le: %s
+            Titre: %s
+            Description: %s
+            Priorite: %s
+            Statut actuel: %s
+            Cree le: %s
             %s
-            ═══════════════════════════════════════════════════════
+            ===========================================================
             """,
             supportName,
             supportEmail,
@@ -51,7 +51,7 @@ public class SupportNotification implements TicketObserver {
             ticket.getStatut().getLibelle(),
             ticket.getDateCreation(),
             ticket.getAssignedSupportId() != null ? 
-                "👤 Assigné à: " + ticket.getAssignedSupportId() : "⚠️ Non assigné"
+                "Assigne a: " + ticket.getAssignedSupportId() : "Non assigne"
         );
         
         System.out.println(message);

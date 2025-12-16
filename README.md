@@ -1,14 +1,14 @@
 # CRM - Module Support Client
 
-## 📋 Description
+## Description
 
-Ce projet implémente le module **Support Client** d'un CRM (Customer Relationship Management) dans le cadre du cours d'Analyse et Conception (GL3).
+Ce projet implemente le module **Support Client** d'un CRM (Customer Relationship Management) dans le cadre du cours d'Analyse et Conception (GL3).
 
-Le module démontre l'application de deux **Design Patterns** majeurs :
-- **State Pattern** : Gestion des états du cycle de vie d'un ticket
-- **Observer Pattern** : Système de notifications automatiques
+Le module demontre l'application de deux **Design Patterns** majeurs :
+- **State Pattern** : Gestion des etats du cycle de vie d'un ticket
+- **Observer Pattern** : Systeme de notifications automatiques
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 src/main/java/com/crm/supportclient/
@@ -35,81 +35,81 @@ src/main/java/com/crm/supportclient/
     └── SupportClient.java             # Agent de support (Core)
 ```
 
-## 🎯 Design Patterns Implémentés
+## Design Patterns Implementes
 
 ### 1. State Pattern
 
-**Problème résolu** : Le comportement d'un ticket varie selon son état (Ouvert, Assigné, En Cours, Résolu, Fermé). Sans le pattern State, le code serait pollué de conditions `if/else` ou `switch`.
+**Probleme resolu** : Le comportement d'un ticket varie selon son etat (Ouvert, Assigne, En Cours, Resolu, Ferme). Sans le pattern State, le code serait pollue de conditions `if/else` ou `switch`.
 
-**Solution** : Chaque état est encapsulé dans une classe qui implémente `TicketState`. Le ticket délègue les opérations à son état courant.
+**Solution** : Chaque etat est encapsule dans une classe qui implemente `TicketState`. Le ticket delegue les operations a son etat courant.
 
 ```
-┌─────────┐     ┌─────────────┐     ┌───────────┐     ┌──────────┐     ┌─────────┐
-│ Ouvert  │ ──► │   Assigné   │ ──► │ En Cours  │ ──► │  Résolu  │ ──► │  Fermé  │
-└─────────┘     └─────────────┘     └───────────┘     └──────────┘     └─────────┘
-     │                │                                     │
-     └────────────────┴─────────────────────────────────────┘
-                        (Réouverture possible)
++----------+     +-------------+     +-----------+     +----------+     +---------+
+|  Ouvert  | --> |   Assigne   | --> | En Cours  | --> |  Resolu  | --> |  Ferme  |
++----------+     +-------------+     +-----------+     +----------+     +---------+
+     |                |                                     |
+     +----------------+-------------------------------------+
+                        (Reouverture possible)
 ```
 
 ### 2. Observer Pattern
 
-**Problème résolu** : Plusieurs parties prenantes (client, agent support) doivent être informées des changements de statut d'un ticket, sans créer de couplage fort.
+**Probleme resolu** : Plusieurs parties prenantes (client, agent support) doivent etre informees des changements de statut d'un ticket, sans creer de couplage fort.
 
-**Solution** : Le `Ticket` maintient une liste d'`TicketObserver`. Lors de chaque changement, tous les observateurs sont notifiés automatiquement.
+**Solution** : Le `Ticket` maintient une liste d'`TicketObserver`. Lors de chaque changement, tous les observateurs sont notifies automatiquement.
 
 ```
-        ┌─────────────────────┐
-        │       Ticket        │
-        │     (Subject)       │
-        └──────────┬──────────┘
-                   │ notifyObservers()
-          ┌────────┴────────┐
-          ▼                 ▼
-┌──────────────────┐ ┌──────────────────┐
-│ClientNotification│ │SupportNotification│
-│   (Observer)     │ │    (Observer)     │
-└──────────────────┘ └──────────────────┘
+        +---------------------+
+        |       Ticket        |
+        |     (Subject)       |
+        +----------+----------+
+                   | notifyObservers()
+          +--------+--------+
+          v                 v
++------------------+ +------------------+
+|ClientNotification| |SupportNotification|
+|   (Observer)     | |    (Observer)     |
++------------------+ +------------------+
 ```
 
-## ✅ Principes SOLID Respectés
+## Principes SOLID Respectes
 
 | Principe | Application |
 |----------|-------------|
-| **SRP** | Chaque état gère uniquement sa logique de transition |
-| **OCP** | Nouveaux états ajoutables sans modifier `Ticket` |
+| **SRP** | Chaque etat gere uniquement sa logique de transition |
+| **OCP** | Nouveaux etats ajoutables sans modifier `Ticket` |
 | **LSP** | Tous les `TicketState` sont interchangeables |
-| **ISP** | Interface `TicketObserver` minimale (une seule méthode) |
-| **DIP** | `Ticket` dépend des abstractions (`TicketState`, `TicketObserver`) |
+| **ISP** | Interface `TicketObserver` minimale (une seule methode) |
+| **DIP** | `Ticket` depend des abstractions (`TicketState`, `TicketObserver`) |
 
-## 🚀 Exécution
+## Execution
 
-### Prérequis
+### Prerequis
 - Java 17+
 - Maven 3.8+
 
-### Compiler et exécuter
+### Compiler et executer
 
 ```bash
 # Compiler le projet
 mvn clean compile
 
-# Exécuter la démonstration
+# Executer la demonstration
 mvn exec:java
 
-# Ou créer le JAR et l'exécuter
+# Ou creer le JAR et l'executer
 mvn package
 java -jar target/support-client-1.0.0.jar
 ```
 
-## 📊 Diagramme de Classes (PlantUML)
+## Diagramme de Classes (PlantUML)
 
 Le diagramme de classes complet est disponible dans le fichier `diagrams/support-client.puml`.
 
-## 👥 Auteur
+## Auteur
 
-Projet réalisé dans le cadre du cours **Analyse et Conception** - GL3
+Projet realise dans le cadre du cours **Analyse et Conception** - GL3
 
-## 📄 Licence
+## Licence
 
-Projet académique - Usage éducatif uniquement
+Projet academique - Usage educatif uniquement

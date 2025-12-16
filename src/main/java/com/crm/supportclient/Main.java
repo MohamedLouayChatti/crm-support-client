@@ -25,10 +25,10 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("""
-            ╔══════════════════════════════════════════════════════════════╗
-            ║           CRM - MODULE SUPPORT CLIENT                        ║
-            ║           Démonstration des Design Patterns                  ║
-            ╚══════════════════════════════════════════════════════════════╝
+            +==============================================================+
+            |           CRM - MODULE SUPPORT CLIENT                        |
+            |           Demonstration des Design Patterns                  |
+            +==============================================================+
             """);
 
         // ===== INITIALISATION =====
@@ -37,8 +37,8 @@ public class Main {
         Client client = new Client(1, "Jean Dupont", "jean.dupont@email.com");
         SupportClient agentSupport = new SupportClient("Marie Martin", "marie.martin@crm.com", "Technique");
         
-        System.out.println("👤 Client créé: " + client);
-        System.out.println("👨‍💼 Agent Support créé: " + agentSupport);
+        System.out.println("[CLIENT] Client cree: " + client);
+        System.out.println("[AGENT] Agent Support cree: " + agentSupport);
         System.out.println();
 
         // Créer le portail client
@@ -47,9 +47,9 @@ public class Main {
         // ===== DÉMONSTRATION BASE DE CONNAISSANCES =====
         
         System.out.println("""
-            ────────────────────────────────────────────────────────────────
-            📚 DÉMONSTRATION: BASE DE CONNAISSANCES
-            ────────────────────────────────────────────────────────────────
+            ----------------------------------------------------------------
+            DEMONSTRATION: BASE DE CONNAISSANCES
+            ----------------------------------------------------------------
             """);
 
         ArticleBaseConnaissance article1 = new ArticleBaseConnaissance(
@@ -72,15 +72,15 @@ public class Main {
         // ===== DÉMONSTRATION STATE + OBSERVER PATTERNS =====
         
         System.out.println("""
-            ────────────────────────────────────────────────────────────────
-            🎫 DÉMONSTRATION: CYCLE DE VIE D'UN TICKET
+            ----------------------------------------------------------------
+            DEMONSTRATION: CYCLE DE VIE D'UN TICKET
             (State Pattern + Observer Pattern)
-            ────────────────────────────────────────────────────────────────
+            ----------------------------------------------------------------
             """);
 
-        // 1. Créer un ticket
-        System.out.println("▶ ÉTAPE 1: Création du ticket");
-        System.out.println("─".repeat(50));
+        // 1. Creer un ticket
+        System.out.println("> ETAPE 1: Creation du ticket");
+        System.out.println("-".repeat(50));
         
         Ticket ticket = new Ticket(
             "Problème de connexion",
@@ -89,8 +89,8 @@ public class Main {
         );
 
         // 2. Attacher les observateurs (Observer Pattern)
-        System.out.println("\n▶ ÉTAPE 2: Attachement des observateurs");
-        System.out.println("─".repeat(50));
+        System.out.println("\n> ETAPE 2: Attachement des observateurs");
+        System.out.println("-".repeat(50));
         
         ClientNotification clientNotif = new ClientNotification(
             client.getId(), 
@@ -106,34 +106,34 @@ public class Main {
         ticket.attach(clientNotif);
         ticket.attach(supportNotif);
 
-        // 3. Créer le ticket (notifie les observateurs)
-        System.out.println("\n▶ ÉTAPE 3: Enregistrement du ticket");
-        System.out.println("─".repeat(50));
+        // 3. Creer le ticket (notifie les observateurs)
+        System.out.println("\n> ETAPE 3: Enregistrement du ticket");
+        System.out.println("-".repeat(50));
         ticket.creer();
         portail.ajouterTicket(client.getId(), ticket);
 
-        // 4. Assigner le ticket (State: Ouvert → Assigné)
-        System.out.println("\n▶ ÉTAPE 4: Assignation du ticket (État: Ouvert → Assigné)");
-        System.out.println("─".repeat(50));
+        // 4. Assigner le ticket (State: Ouvert -> Assigne)
+        System.out.println("\n> ETAPE 4: Assignation du ticket (Etat: Ouvert -> Assigne)");
+        System.out.println("-".repeat(50));
         ticket.assigner(agentSupport.getId());
 
-        // 5. Résoudre le ticket (State: Assigné → EnCours → Résolu)
-        System.out.println("\n▶ ÉTAPE 5: Résolution du ticket (État: Assigné → En Cours → Résolu)");
-        System.out.println("─".repeat(50));
+        // 5. Resoudre le ticket (State: Assigne -> EnCours -> Resolu)
+        System.out.println("\n> ETAPE 5: Resolution du ticket (Etat: Assigne -> En Cours -> Resolu)");
+        System.out.println("-".repeat(50));
         ticket.resoudre("Le problème était lié à un cache navigateur. Videz le cache et reconnectez-vous.");
 
-        // 6. Fermer le ticket (State: Résolu → Fermé)
-        System.out.println("\n▶ ÉTAPE 6: Fermeture du ticket (État: Résolu → Fermé)");
-        System.out.println("─".repeat(50));
+        // 6. Fermer le ticket (State: Resolu -> Ferme)
+        System.out.println("\n> ETAPE 6: Fermeture du ticket (Etat: Resolu -> Ferme)");
+        System.out.println("-".repeat(50));
         ticket.fermer();
 
-        // ===== DÉMONSTRATION DES TRANSITIONS INVALIDES =====
+        // ===== DEMONSTRATION DES TRANSITIONS INVALIDES =====
         
         System.out.println("""
             
-            ────────────────────────────────────────────────────────────────
-            ⚠️ DÉMONSTRATION: TRANSITIONS D'ÉTAT INVALIDES
-            ────────────────────────────────────────────────────────────────
+            ----------------------------------------------------------------
+            DEMONSTRATION: TRANSITIONS D'ETAT INVALIDES
+            ----------------------------------------------------------------
             """);
 
         Ticket ticket2 = new Ticket(
@@ -145,44 +145,44 @@ public class Main {
         System.out.println("État actuel du ticket #" + ticket2.getId() + ": " + ticket2.getState().getNomEtat());
         
         try {
-            System.out.println("\n❌ Tentative de fermer un ticket ouvert...");
+            System.out.println("\n[X] Tentative de fermer un ticket ouvert...");
             ticket2.fermer();
         } catch (IllegalStateException e) {
             System.out.println("   Exception capturée: " + e.getMessage());
         }
 
         try {
-            System.out.println("\n❌ Tentative de résoudre un ticket non assigné...");
+            System.out.println("\n[X] Tentative de resoudre un ticket non assigne...");
             ticket2.resoudre("Solution impossible");
         } catch (IllegalStateException e) {
             System.out.println("   Exception capturée: " + e.getMessage());
         }
 
-        // ===== RÉSUMÉ =====
+        // ===== RESUME =====
         
         System.out.println("""
             
-            ════════════════════════════════════════════════════════════════
-            📊 RÉSUMÉ DE LA DÉMONSTRATION
-            ════════════════════════════════════════════════════════════════
+            ================================================================
+            RESUME DE LA DEMONSTRATION
+            ================================================================
             
-            ✅ STATE PATTERN implémenté:
-               - 5 états: Ouvert, Assigné, EnCours, Résolu, Fermé
-               - Transitions contrôlées par les états eux-mêmes
+            [OK] STATE PATTERN implemente:
+               - 5 etats: Ouvert, Assigne, EnCours, Resolu, Ferme
+               - Transitions controlees par les etats eux-memes
                - Impossible d'effectuer des actions invalides
             
-            ✅ OBSERVER PATTERN implémenté:
+            [OK] OBSERVER PATTERN implemente:
                - 2 types d'observateurs: ClientNotification, SupportNotification
-               - Notifications automatiques à chaque changement d'état
-               - Découplage entre Ticket et système de notification
+               - Notifications automatiques a chaque changement d'etat
+               - Decouplage entre Ticket et systeme de notification
             
-            ✅ Principes SOLID respectés:
-               - SRP: Chaque état gère sa propre logique de transition
-               - OCP: Nouveaux états ajoutables sans modifier Ticket
+            [OK] Principes SOLID respectes:
+               - SRP: Chaque etat gere sa propre logique de transition
+               - OCP: Nouveaux etats ajoutables sans modifier Ticket
                - LSP: Tous les TicketState sont substituables
-               - DIP: Ticket dépend de l'interface TicketState
+               - DIP: Ticket depend de l'interface TicketState
             
-            ════════════════════════════════════════════════════════════════
+            ================================================================
             """);
     }
 }

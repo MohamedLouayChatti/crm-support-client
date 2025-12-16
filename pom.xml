@@ -52,6 +52,17 @@
                 <configuration>
                     <mainClass>com.crm.supportclient.Main</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>run-web</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.crm.supportclient.web.WebServer</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Plugin JAR avec manifest -->
