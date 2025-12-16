@@ -85,7 +85,7 @@ src/main/java/com/crm/supportclient/
 ## Execution
 
 ### Prerequis
-- Java 17+
+- Java 21+ (upgraded from Java 17)
 - Maven 3.8+
 
 ### Compiler et executer
@@ -94,8 +94,11 @@ src/main/java/com/crm/supportclient/
 # Compiler le projet
 mvn clean compile
 
-# Executer la demonstration
+# Executer la demonstration console
 mvn exec:java
+
+# Executer l'interface web (http://localhost:8080)
+mvn exec:java@run-web
 
 # Ou creer le JAR et l'executer
 mvn package
@@ -105,6 +108,12 @@ java -jar target/support-client-1.0.0.jar
 ## Diagramme de Classes (PlantUML)
 
 Le diagramme de classes complet est disponible dans le fichier `diagrams/support-client.puml`.
+
+## Historique des Mises a Jour
+
+| Date | Version Java | Changements |
+|------|--------------|-------------|
+| 2025-12-16 | 17 → 21 | Mise a niveau vers Java 21 LTS |
 
 ## Auteur
 
