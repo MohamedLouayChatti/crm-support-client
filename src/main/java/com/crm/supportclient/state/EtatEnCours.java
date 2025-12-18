@@ -3,14 +3,7 @@ package com.crm.supportclient.state;
 import com.crm.supportclient.model.Ticket;
 import com.crm.supportclient.model.StatutTicket;
 
-/**
- * État En Cours - Le ticket est en cours de traitement par l'agent.
- * 
- * Transitions possibles:
- * - Peut être résolu → EtatResolu
- * - Peut être réassigné → EtatAssigne
- * - Ne peut pas être fermé directement
- */
+/** État En Cours - Ticket en traitement. */
 public class EtatEnCours implements TicketState {
 
     @Override

@@ -3,10 +3,7 @@ package com.crm.supportclient.external;
 import java.util.UUID;
 
 /**
- * Classe externe SupportClient - Représente un agent du support client.
- * 
- * Cette classe est marquée comme <<external>> dans le diagramme car elle
- * appartient au module Core du CRM et est réutilisée par le module Support Client.
+ * Agent de support (entité externe du module Core).
  */
 public class SupportClient {
     
@@ -31,8 +28,6 @@ public class SupportClient {
         this(nom, email);
         this.specialite = specialite;
     }
-
-    // ===== GETTERS & SETTERS =====
 
     public UUID getId() {
         return id;

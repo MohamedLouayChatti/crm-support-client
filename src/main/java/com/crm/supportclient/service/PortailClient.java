@@ -8,17 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Classe PortailClient - Interface principale pour les clients.
- * 
- * Le portail client permet aux clients de:
- * - Consulter la base de connaissances
- * - Consulter leurs tickets
- * - Créer de nouveaux tickets
- */
+/** Portail client - Gestion des tickets et base de connaissances. */
 public class PortailClient {
     
-    // Stockage en mémoire (simulation de base de données)
     private final Map<Integer, Ticket> ticketsByClient;
     private final List<ArticleBaseConnaissance> baseConnaissance;
 
@@ -27,23 +19,12 @@ public class PortailClient {
         this.baseConnaissance = new ArrayList<>();
     }
 
-    /**
-     * Consulte la base de connaissances.
-     * 
-     * @return Liste de tous les articles de la base de connaissances
-     */
     public List<ArticleBaseConnaissance> consulterBaseConnaissance() {
         System.out.println("[KB] Consultation de la base de connaissances...");
         System.out.println("   " + baseConnaissance.size() + " article(s) trouve(s)");
         return new ArrayList<>(baseConnaissance);
     }
 
-    /**
-     * Recherche des articles par mot-clé.
-     * 
-     * @param motCle Le mot-clé à rechercher
-     * @return Liste des articles correspondants
-     */
     public List<ArticleBaseConnaissance> rechercherArticles(String motCle) {
         System.out.println("[SEARCH] Recherche d'articles contenant: " + motCle);
         
@@ -57,12 +38,6 @@ public class PortailClient {
         return resultats;
     }
 
-    /**
-     * Consulte les tickets d'un client spécifique.
-     * 
-     * @param clientId L'identifiant du client
-     * @return Liste des tickets du client
-     */
     public List<Ticket> consulterTickets(int clientId) {
         System.out.println("[TICKETS] Consultation des tickets du client #" + clientId);
         
@@ -74,42 +49,20 @@ public class PortailClient {
         return new ArrayList<>(tickets);
     }
 
-    /**
-     * Ajoute un ticket au portail.
-     * 
-     * @param clientId L'identifiant du client
-     * @param ticket Le ticket à ajouter
-     */
     public void ajouterTicket(int clientId, Ticket ticket) {
         ticketsByClient.put(ticket.getId(), ticket);
         System.out.println("[OK] Ticket #" + ticket.getId() + " ajoute pour le client #" + clientId);
     }
 
-    /**
-     * Ajoute un article à la base de connaissances.
-     * 
-     * @param article L'article à ajouter
-     */
     public void ajouterArticle(ArticleBaseConnaissance article) {
         baseConnaissance.add(article);
         article.ajouter();
     }
 
-    /**
-     * Récupère un ticket par son ID.
-     * 
-     * @param ticketId L'identifiant du ticket
-     * @return Le ticket ou null s'il n'existe pas
-     */
     public Ticket getTicket(int ticketId) {
         return ticketsByClient.get(ticketId);
     }
 
-    /**
-     * Récupère tous les tickets.
-     * 
-     * @return Liste de tous les tickets
-     */
     public List<Ticket> getTousLesTickets() {
         return new ArrayList<>(ticketsByClient.values());
     }

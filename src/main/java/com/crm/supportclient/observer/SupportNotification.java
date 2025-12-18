@@ -3,12 +3,7 @@ package com.crm.supportclient.observer;
 import com.crm.supportclient.model.Ticket;
 import java.util.UUID;
 
-/**
- * Observateur concret - Notification pour l'agent de support.
- * 
- * Cette classe implémente l'interface TicketObserver pour envoyer
- * des notifications à l'agent de support assigné au ticket.
- */
+/** Observateur - Notifie l'agent de support. */
 public class SupportNotification implements TicketObserver {
     
     private final UUID supportId;

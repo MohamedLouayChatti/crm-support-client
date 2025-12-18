@@ -1,10 +1,7 @@
 package com.crm.supportclient.external;
 
 /**
- * Classe externe Client - Représente un client du CRM.
- * 
- * Cette classe est marquée comme <<external>> dans le diagramme car elle
- * appartient au module Core du CRM et est réutilisée par le module Support Client.
+ * Client du CRM (entité externe du module Core).
  */
 public class Client {
     
@@ -26,8 +23,6 @@ public class Client {
         this(id, nom, email);
         this.telephone = telephone;
     }
-
-    // ===== GETTERS & SETTERS =====
 
     public int getId() {
         return id;

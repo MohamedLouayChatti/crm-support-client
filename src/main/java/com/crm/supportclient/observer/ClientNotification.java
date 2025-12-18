@@ -2,12 +2,7 @@ package com.crm.supportclient.observer;
 
 import com.crm.supportclient.model.Ticket;
 
-/**
- * Observateur concret - Notification pour le client.
- * 
- * Cette classe implémente l'interface TicketObserver pour envoyer
- * des notifications au client lorsque son ticket change d'état.
- */
+/** Observateur - Notifie le client par email. */
 public class ClientNotification implements TicketObserver {
     
     private final int clientId;

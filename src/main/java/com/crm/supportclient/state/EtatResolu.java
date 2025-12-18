@@ -3,13 +3,7 @@ package com.crm.supportclient.state;
 import com.crm.supportclient.model.Ticket;
 import com.crm.supportclient.model.StatutTicket;
 
-/**
- * État Résolu - Le ticket a été résolu avec une solution.
- * 
- * Transitions possibles:
- * - Peut être fermé → EtatFerme
- * - Peut être réouvert (réassigné) si le client n'est pas satisfait → EtatAssigne
- */
+/** État Résolu - Solution apportée. */
 public class EtatResolu implements TicketState {
 
     @Override

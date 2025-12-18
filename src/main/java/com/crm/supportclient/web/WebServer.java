@@ -18,10 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/**
- * Simple Web Server for testing the CRM Support Client module.
- * Provides a REST API and serves static HTML files.
- */
+/** Serveur web pour tester le module Support Client. */
 public class WebServer {
 
     private final HttpServer server;
@@ -101,8 +98,6 @@ public class WebServer {
             eventLog.remove(eventLog.size() - 1);
         }
     }
-
-    // ==================== HTTP Handlers ====================
 
     class StaticFileHandler implements HttpHandler {
         @Override
@@ -326,8 +321,6 @@ public class WebServer {
             sendJsonResponse(exchange, json.toString());
         }
     }
-
-    // ==================== Helper Methods ====================
 
     private String ticketToJson(Ticket ticket) {
         return "{" +

@@ -85,7 +85,7 @@ src/main/java/com/crm/supportclient/
 ## Execution
 
 ### Prerequis
-- Java 21+ (upgraded from Java 17)
+- Java 21+
 - Maven 3.8+
 
 ### Compiler et executer

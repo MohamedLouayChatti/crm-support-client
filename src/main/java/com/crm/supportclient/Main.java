@@ -9,17 +9,7 @@ import com.crm.supportclient.observer.SupportNotification;
 import com.crm.supportclient.service.PortailClient;
 
 /**
- * Classe principale - Démonstration du module Support Client.
- * 
- * Ce programme démontre l'utilisation des Design Patterns:
- * 1. STATE PATTERN: Gestion des états du ticket (Ouvert → Assigné → EnCours → Résolu → Fermé)
- * 2. OBSERVER PATTERN: Notification automatique des clients et agents lors de changements
- * 
- * Principes SOLID illustrés:
- * - SRP (Single Responsibility): Chaque classe a une responsabilité unique
- * - OCP (Open/Closed): Les états sont extensibles sans modifier Ticket
- * - LSP (Liskov Substitution): Les états sont interchangeables
- * - DIP (Dependency Inversion): Dépendance envers les abstractions (interfaces)
+ * Point d'entrée - Démo du module Support Client.
  */
 public class Main {
 
@@ -31,9 +21,9 @@ public class Main {
             +==============================================================+
             """);
 
-        // ===== INITIALISATION =====
+        // Initialisation
         
-        // Créer les acteurs
+        // Création des acteurs
         Client client = new Client(1, "Jean Dupont", "jean.dupont@email.com");
         SupportClient agentSupport = new SupportClient("Marie Martin", "marie.martin@crm.com", "Technique");
         
@@ -41,10 +31,10 @@ public class Main {
         System.out.println("[AGENT] Agent Support cree: " + agentSupport);
         System.out.println();
 
-        // Créer le portail client
+        // Portail client
         PortailClient portail = new PortailClient();
 
-        // ===== DÉMONSTRATION BASE DE CONNAISSANCES =====
+        // Démo base de connaissances
         
         System.out.println("""
             ----------------------------------------------------------------
@@ -69,7 +59,7 @@ public class Main {
         portail.consulterBaseConnaissance();
         System.out.println();
 
-        // ===== DÉMONSTRATION STATE + OBSERVER PATTERNS =====
+        // Démo cycle de vie d'un ticket
         
         System.out.println("""
             ----------------------------------------------------------------
@@ -78,7 +68,6 @@ public class Main {
             ----------------------------------------------------------------
             """);
 
-        // 1. Creer un ticket
         System.out.println("> ETAPE 1: Creation du ticket");
         System.out.println("-".repeat(50));
         
@@ -88,7 +77,6 @@ public class Main {
             "Haute"
         );
 
-        // 2. Attacher les observateurs (Observer Pattern)
         System.out.println("\n> ETAPE 2: Attachement des observateurs");
         System.out.println("-".repeat(50));
         
@@ -106,28 +94,24 @@ public class Main {
         ticket.attach(clientNotif);
         ticket.attach(supportNotif);
 
-        // 3. Creer le ticket (notifie les observateurs)
         System.out.println("\n> ETAPE 3: Enregistrement du ticket");
         System.out.println("-".repeat(50));
         ticket.creer();
         portail.ajouterTicket(client.getId(), ticket);
 
-        // 4. Assigner le ticket (State: Ouvert -> Assigne)
         System.out.println("\n> ETAPE 4: Assignation du ticket (Etat: Ouvert -> Assigne)");
         System.out.println("-".repeat(50));
         ticket.assigner(agentSupport.getId());
 
-        // 5. Resoudre le ticket (State: Assigne -> EnCours -> Resolu)
         System.out.println("\n> ETAPE 5: Resolution du ticket (Etat: Assigne -> En Cours -> Resolu)");
         System.out.println("-".repeat(50));
         ticket.resoudre("Le problème était lié à un cache navigateur. Videz le cache et reconnectez-vous.");
 
-        // 6. Fermer le ticket (State: Resolu -> Ferme)
         System.out.println("\n> ETAPE 6: Fermeture du ticket (Etat: Resolu -> Ferme)");
         System.out.println("-".repeat(50));
         ticket.fermer();
 
-        // ===== DEMONSTRATION DES TRANSITIONS INVALIDES =====
+        // Démo transitions invalides
         
         System.out.println("""
             
@@ -158,7 +142,7 @@ public class Main {
             System.out.println("   Exception capturée: " + e.getMessage());
         }
 
-        // ===== RESUME =====
+        // Résumé
         
         System.out.println("""
             

@@ -3,14 +3,7 @@ package com.crm.supportclient.state;
 import com.crm.supportclient.model.Ticket;
 import com.crm.supportclient.model.StatutTicket;
 
-/**
- * État Ouvert - Le ticket vient d'être créé et n'est pas encore assigné.
- * 
- * Transitions possibles:
- * - Peut être assigné → EtatAssigne
- * - Ne peut pas être résolu directement
- * - Ne peut pas être fermé directement
- */
+/** État Ouvert - Ticket non assigné. */
 public class EtatOuvert implements TicketState {
 
     @Override

@@ -3,13 +3,7 @@ package com.crm.supportclient.state;
 import com.crm.supportclient.model.Ticket;
 import com.crm.supportclient.model.StatutTicket;
 
-/**
- * État Fermé - Le ticket est clôturé définitivement.
- * 
- * Transitions possibles:
- * - Peut être réouvert dans des cas exceptionnels → EtatOuvert
- * - Ne peut plus être modifié normalement
- */
+/** État Fermé - Ticket clôturé. */
 public class EtatFerme implements TicketState {
 
     @Override

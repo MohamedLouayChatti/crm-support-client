@@ -1,8 +1,6 @@
 package com.crm.supportclient.model;
 
-/**
- * Enumération représentant les différents statuts d'un ticket.
- */
+/** Statuts possibles d'un ticket. */
 public enum StatutTicket {
     OUVERT("Ouvert"),
     ASSIGNE("Assigné"),

@@ -3,14 +3,7 @@ package com.crm.supportclient.state;
 import com.crm.supportclient.model.Ticket;
 import com.crm.supportclient.model.StatutTicket;
 
-/**
- * État Assigné - Le ticket a été assigné à un agent de support.
- * 
- * Transitions possibles:
- * - Peut passer en cours de traitement → EtatEnCours
- * - Peut être réassigné (reste dans EtatAssigne)
- * - Ne peut pas être fermé directement
- */
+/** État Assigné - Ticket attribué à un agent. */
 public class EtatAssigne implements TicketState {
 
     @Override
