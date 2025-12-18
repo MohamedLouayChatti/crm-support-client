@@ -99,26 +99,3 @@ mvn exec:java
 
 # Executer l'interface web (http://localhost:8080)
 mvn exec:java@run-web
-
-# Ou creer le JAR et l'executer
-mvn package
-java -jar target/support-client-1.0.0.jar
-```
-
-## Diagramme de Classes (PlantUML)
-
-Le diagramme de classes complet est disponible dans le fichier `diagrams/support-client.puml`.
-
-## Historique des Mises a Jour
-
-| Date | Version Java | Changements |
-|------|--------------|-------------|
-| 2025-12-16 | 17 → 21 | Mise a niveau vers Java 21 LTS |
-
-## Auteur
-
-Projet realise dans le cadre du cours **Analyse et Conception** - GL3
-
-## Licence
-
-Projet academique - Usage educatif uniquement
