@@ -22,18 +22,18 @@ public class ClientNotification implements TicketObserver {
     public void update(Ticket ticket) {
         String message = String.format(
             """
-            ═══════════════════════════════════════════════════════
-            📧 NOTIFICATION CLIENT
-            ═══════════════════════════════════════════════════════
+            ===========================================================
+            NOTIFICATION CLIENT
+            ===========================================================
             Destinataire: %s (Client #%d)
             
-            Votre ticket #%d a été mis à jour!
+            Votre ticket #%d a ete mis a jour!
             
-            📋 Titre: %s
-            📊 Nouveau statut: %s
-            📅 Date de création: %s
+            Titre: %s
+            Nouveau statut: %s
+            Date de creation: %s
             %s
-            ═══════════════════════════════════════════════════════
+            ===========================================================
             """,
             clientEmail,
             clientId,
@@ -41,7 +41,7 @@ public class ClientNotification implements TicketObserver {
             ticket.getTitre(),
             ticket.getStatut().getLibelle(),
             ticket.getDateCreation(),
-            ticket.getSolution() != null ? "✅ Solution: " + ticket.getSolution() : ""
+            ticket.getSolution() != null ? "Solution: " + ticket.getSolution() : ""
         );
         
         System.out.println(message);

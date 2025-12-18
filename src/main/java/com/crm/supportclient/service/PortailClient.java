@@ -33,8 +33,8 @@ public class PortailClient {
      * @return Liste de tous les articles de la base de connaissances
      */
     public List<ArticleBaseConnaissance> consulterBaseConnaissance() {
-        System.out.println("📚 Consultation de la base de connaissances...");
-        System.out.println("   " + baseConnaissance.size() + " article(s) trouvé(s)");
+        System.out.println("[KB] Consultation de la base de connaissances...");
+        System.out.println("   " + baseConnaissance.size() + " article(s) trouve(s)");
         return new ArrayList<>(baseConnaissance);
     }
 
@@ -45,7 +45,7 @@ public class PortailClient {
      * @return Liste des articles correspondants
      */
     public List<ArticleBaseConnaissance> rechercherArticles(String motCle) {
-        System.out.println("🔍 Recherche d'articles contenant: " + motCle);
+        System.out.println("[SEARCH] Recherche d'articles contenant: " + motCle);
         
         List<ArticleBaseConnaissance> resultats = baseConnaissance.stream()
             .filter(article -> 
@@ -64,7 +64,7 @@ public class PortailClient {
      * @return Liste des tickets du client
      */
     public List<Ticket> consulterTickets(int clientId) {
-        System.out.println("📋 Consultation des tickets du client #" + clientId);
+        System.out.println("[TICKETS] Consultation des tickets du client #" + clientId);
         
         List<Ticket> tickets = ticketsByClient.values().stream()
             .filter(ticket -> ticket.getId() == clientId) // Simplification
@@ -82,7 +82,7 @@ public class PortailClient {
      */
     public void ajouterTicket(int clientId, Ticket ticket) {
         ticketsByClient.put(ticket.getId(), ticket);
-        System.out.println("✅ Ticket #" + ticket.getId() + " ajouté pour le client #" + clientId);
+        System.out.println("[OK] Ticket #" + ticket.getId() + " ajoute pour le client #" + clientId);
     }
 
     /**
